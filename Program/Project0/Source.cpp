@@ -14,20 +14,47 @@ int main(int argc, char* argv[])
 
 	Node* tree = new Node;
 
-	if (Read_tree_from_file(argv[2], *tree) == -1)
+	QString error_text="";
+	switch (Read_tree_from_file(argv[2], *tree))
 	{
-		out << "Failed to open file" << endl;
-		return -2;
+	case -1:
+		error_text = "Invalid input file specified. The file may not exist.";
+	case -2:
+		error_text = "The file extension is incorrect. The file must have the extension .xml";
+	case -3:
+		error_text = "The file can not be read. The input file may not have the correct syntax.";
+	case -4:
+		error_text = "The source tree contains unsupported operations.";
+	case -5:
+		error_text = "The length of one or more operands exceeds the maximum length (100 characters).";
+	case -6:
+		error_text = "No comparison signs were encountered in the input file.";
+	case -7:
+		error_text = "Incorrect location of the comparison operation in the input tree.";
+	case -8:
+		error_text = "One or more operations correspond to an incorrect number of operands.";
+	default:
+
+		QFile output_file(argv[3]);
+		output_file.open(QIODevice::WriteOnly | QIODevice::Text);
+		QTextStream out(&output_file);
+
+		out << error_text;
+
+		
+
+		break;
 	}
 
 	Transfering_to_left_side(*tree);
 
 	Uniting_pluses_minuses_multiplications(*tree);
 
-	Sorting_in_alphabet_order(*tree->children[0]);
+	Sorting_in_alphabet_order(*tree->get_children()[0]);
 
 	Write_tree_to_file(argv[3], *tree);
 
+	output_file.close();
 	return 0;
 
 	/*	int count = 0;
@@ -60,6 +87,7 @@ int Read_tree_from_file(char file_path[], Node& tree)
 	Reader.readNextStartElement();
 
 	Read_nodes(Reader, tree);
+	tree = *tree.get_children()[0];
 
 	input_file->close();
 	return 0;
@@ -71,9 +99,9 @@ int Read_nodes(QXmlStreamReader& Reader, Node& parent_Node)
 
 	if (Reader.name() == "operation")
 	{
-		current_Node->type = operation;
-		current_Node->value = Reader.attributes().value("symbol").toString();
-		parent_Node.children.push_back(current_Node);
+		current_Node->set_type(operation);
+		current_Node->set_value(Reader.attributes().value("symbol").toString());
+		parent_Node.add_child(current_Node);
 
 		while (true)
 		{
@@ -97,71 +125,72 @@ int Read_nodes(QXmlStreamReader& Reader, Node& parent_Node)
 	{
 		if (Reader.name() == "operand")
 		{
-			current_Node->type = operand;
-			current_Node->value = Reader.readElementText();
+			current_Node->set_type(operand);
+			current_Node->set_value(Reader.readElementText());
 
-			parent_Node.children.push_back(current_Node);
+			parent_Node.add_child(current_Node);
 
 			return 0;
 		}
 	}
 }
 
-void Transfering_to_left_side(Node& tree)
+void Transfering_to_left_side(Node& Main_node)
 {
-	if (tree.children[0]->children[1]->value != "0")
+	if (Main_node.get_children()[1]->get_value() != "0")
 	{
 		Node* zero_Node = new Node;
-		zero_Node->value = "0";
-		zero_Node->type = operand;
+		zero_Node->set_value("0");
+		zero_Node->set_type(operand);
 
 		Node* plus_Node = new Node;
-		plus_Node->value = "+";
-		plus_Node->type = operation;
-		plus_Node->children.push_back(tree.children[0]->children[0]);
-		plus_Node->children.push_back(tree.children[0]->children[1]);
+		plus_Node->set_value("+");
+		plus_Node->set_type(operation);
+		plus_Node->add_child(Main_node.get_children()[0]);
+		plus_Node->add_child(Main_node.get_children()[1]);
 
-		Change_sign(*plus_Node->children[1], *plus_Node, 1);
+		Change_sign(*plus_Node->get_children()[1], *plus_Node, 1);
 
-		tree.children[0]->children[0] = plus_Node;
-		tree.children[0]->children[1] = zero_Node;
+		Main_node.change_child(plus_Node,0);
+		Main_node.change_child(zero_Node,1);
 	}
+	return;
 }
 
 void Change_sign(Node& current_Node, Node& parent_Node, int child_pos)
 {
-	if (current_Node.value == "+" || current_Node.value == "-")
+	if (current_Node.get_value() == "+" || current_Node.get_value() == "-")
 	{
-		if (current_Node.children.size() != 0)
+		if (current_Node.get_children().size() != 0)
 		{
-			for (int i = 0; i < current_Node.children.size(); i++)
+			for (int i = 0; i < current_Node.get_children().size(); i++)
 			{
-				Change_sign(*current_Node.children[i], current_Node, i);
+				Change_sign(*current_Node.get_children()[i], current_Node, i);
 			}
 		}
 	}
-	if (parent_Node.value == "+")
+	if (parent_Node.get_value() == "+")
 	{
-		if (current_Node.value == "-")
+		if (current_Node.get_value() == "-")
 		{
-			auto iter = parent_Node.children.cbegin();
-			parent_Node.children.insert(iter + child_pos, current_Node.children[0]);
-			iter = parent_Node.children.cbegin();
-			parent_Node.children.erase(iter + child_pos + 1);
+			auto iter = parent_Node.get_children().cbegin();
+			parent_Node.get_children().insert(iter + child_pos, current_Node.get_children()[0]);
+			iter = parent_Node.get_children().cbegin();
+			parent_Node.get_children().erase(iter + child_pos + 1);
 		}
 		else
 		{
-			if (current_Node.value != "+")
+			if (current_Node.get_value() != "+")
 			{
 				Node* minus_Node = new Node;
-				minus_Node->value = "-";
-				minus_Node->type = operation;
-				minus_Node->children.push_back(&current_Node);
+				minus_Node->set_value("-");
+				minus_Node->set_type(operation);
+				minus_Node->add_child(&current_Node);
 
-				auto iter = parent_Node.children.cbegin();
-				parent_Node.children.insert(iter + child_pos, minus_Node);
-				iter = parent_Node.children.cbegin();
-				parent_Node.children.erase(iter + child_pos + 1);
+				auto iter = parent_Node.get_children().cbegin();
+				parent_Node.get_children().insert(iter + child_pos, minus_Node);
+				iter = parent_Node.get_children().cbegin();
+				parent_Node.get_children().erase(iter + child_pos + 1);
 			}
 		}
 	}
@@ -170,70 +199,68 @@ void Change_sign(Node& current_Node, Node& parent_Node, int child_pos)
 
 void Uniting_pluses_minuses_multiplications(Node& current_Node)
 {
-	for (int j = 0; j < current_Node.children.size(); j++)
+	for (int j = 0; j < current_Node.get_children().size(); j++)
 	{
-		if (current_Node.children[j]->type == operation)
+		if (current_Node.get_children()[j]->get_type() == operation)
 		{
-			Uniting_pluses_minuses_multiplications(*current_Node.children[j]);
+			Uniting_pluses_minuses_multiplications(*current_Node.get_children()[j]);
 		}
 	}
 
-	for (int i = 0; i < current_Node.children.size(); i++)
+	for (int i = 0; i < current_Node.get_children().size(); i++)
 	{
-		if (current_Node.value == "+")
+		if (current_Node.get_value() == "+")
 		{
-			if (current_Node.children[i]->value == "+")
+			if (current_Node.get_children()[i]->get_value() == "+")
 			{
-				auto iter = current_Node.children.cbegin();
-				int size = current_Node.children[i]->children.size();
-				current_Node.children.insert(iter + i, current_Node.children[i]->children.begin(), current_Node.children[i]->children.begin() + current_Node.children[i]->children.size());
-				iter = current_Node.children.cbegin();
-				current_Node.children.erase(iter + i + size);
+				auto iter = current_Node.get_children().cbegin();
+				int size = current_Node.get_children()[i]->get_children().size();
+				current_Node.get_children().insert(iter + i, current_Node.get_children()[i]->get_children().begin(), current_Node.get_children()[i]->get_children().begin() + current_Node.get_children()[i]->get_children().size());
+				iter = current_Node.get_children().cbegin();
+				current_Node.get_children().erase(iter + i + size);
 			}
 		}
 
-		if (current_Node.value == "-" && current_Node.children[i]->value == "+")
+		if (current_Node.get_value() == "-" && current_Node.get_children()[i]->get_value() == "+")
 		{
-			current_Node.value = "+";
-			current_Node.children = current_Node.children[i]->children;
+			current_Node.set_value("+");
+			current_Node.set_children(current_Node.get_children()[i]->get_children());
 
-			for (int i=0;i<current_Node.children.size(); i++)
+			for (int i=0;i<current_Node.get_children().size(); i++)
 			{
 				Node* minus_Node = new Node;
-				minus_Node->value = "-";
-				minus_Node->type = operation;
-				minus_Node->children.push_back(current_Node.children[i]);
+				minus_Node->set_value("-");
+				minus_Node->set_type(operation);
+				minus_Node->add_child(current_Node.get_children()[i]);
 
-				auto iter = current_Node.children.cbegin();
-				current_Node.children.insert(iter + i, minus_Node);
-				iter = current_Node.children.cbegin();
-				current_Node.children.erase(iter + i + 1);
+				auto iter = current_Node.get_children().cbegin();
+				current_Node.get_children().insert(iter + i, minus_Node);
+				iter = current_Node.get_children().cbegin();
+				current_Node.get_children().erase(iter + i + 1);
 
 			}
 		}
 
-		if (current_Node.children[i]->value == "-" && current_Node.children[i]->children[0]->value == "-")
+		if (current_Node.get_children()[i]->get_value() == "-" && current_Node.get_children()[i]->get_children()[0]->get_value() == "-")
 		{
-			auto iter = current_Node.children.cbegin();
-			current_Node.children.insert(iter + i, current_Node.children[i]->children[0]->children.begin(), current_Node.children[i]->children[0]->children.begin() + 1);
-			iter = current_Node.children.cbegin();
-			current_Node.children.erase(iter + i + 1);
+			auto iter = current_Node.get_children().cbegin();
+			current_Node.get_children().insert(iter + i, current_Node.get_children()[i]->get_children()[0]->get_children().begin(), current_Node.get_children()[i]->get_children()[0]->get_children().begin() + 1);
+			iter = current_Node.get_children().cbegin();
+			current_Node.get_children().erase(iter + i + 1);
 		}
 	}
 	
-
-
-	if (current_Node.value == "*")
+	if (current_Node.get_value() == "*")
 	{
-		for (int i = 0; i < current_Node.children.size(); i++)
+		for (int i = 0; i < current_Node.get_children().size(); i++)
 		{
-			if (current_Node.children[i]->value == "*")
+			if (current_Node.get_children()[i]->get_value() == "*")
 			{
-				auto iter = current_Node.children.cbegin();
-				int size = current_Node.children[i]->children.size();
-				current_Node.children.insert(iter + i, current_Node.children[i]->children.begin(), current_Node.children[i]->children.begin() + current_Node.children[i]->children.size());
-				iter = current_Node.children.cbegin();
-				current_Node.children.erase(iter + i + size);
+				auto iter = current_Node.get_children().cbegin();
+				int size = current_Node.get_children()[i]->get_children().size();
+				current_Node.get_children().insert(iter + i, current_Node.get_children()[i]->get_children().begin(), current_Node.get_children()[i]->get_children().begin() + current_Node.get_children()[i]->get_children().size());
+				iter = current_Node.get_children().cbegin();
+				current_Node.get_children().erase(iter + i + size);
 			}
 		}
 	}
@@ -242,17 +269,17 @@ void Uniting_pluses_minuses_multiplications(Node& current_Node)
 
 void Sorting_in_alphabet_order(Node& current_Node)
 {
-	if (current_Node.type == operand)
+	if (current_Node.get_type() == operand)
 	{
 		return;
 	}
 	else
 	{
-		if (current_Node.type == operation)
+		if (current_Node.get_type() == operation)
 		{
-			for (int i = 0; i < current_Node.children.size(); i++)
+			for (int i = 0; i < current_Node.get_children().size(); i++)
 			{
-				Sorting_in_alphabet_order(*current_Node.children[i]);
+				Sorting_in_alphabet_order(*current_Node.get_children()[i]);
 			}
 			Sorting_multiplication_and_sum_operands(current_Node);
 		}
@@ -264,63 +291,61 @@ void Sorting_in_alphabet_order(Node& current_Node)
 void Sorting_multiplication_and_sum_operands(Node& current_Node)
 {
 	Node* temp_Node;
-	if ( current_Node.value == "*" || current_Node.value == "+")
+	if ( current_Node.get_value() == "*" || current_Node.get_value() == "+")
 	{
-		for (int i = 0; i < current_Node.children.size(); i++)
+		for (int i = 0; i < current_Node.get_children().size(); i++)
 		{
-			for (int j = 0; j < current_Node.children.size(); j++)
+			for (int j = 0; j < current_Node.get_children().size(); j++)
 			{
-				if (current_Node.children[i]->type == operand && current_Node.children[j]->type == operand
+				if (current_Node.get_children()[i]->get_type() == operand && current_Node.get_children()[j]->get_type() == operand
 					&& i<j
-					&& current_Node.children[i]->value > current_Node.children[j]->value)
+					&& current_Node.get_children()[i]->get_value() > current_Node.get_children()[j]->get_value())
 				{
-					temp_Node = current_Node.children[i];
-					current_Node.children[i] = current_Node.children[j];
-					current_Node.children[j] = temp_Node;
+					temp_Node = current_Node.get_children()[i];
+					current_Node.change_child(current_Node.get_children()[j],i);
+					current_Node.change_child(temp_Node,j);
 				}
 				else
 				{
-					if (current_Node.children[i]->type == operation && current_Node.children[j]->type == operation
+					if (current_Node.get_children()[i]->get_type() == operation && current_Node.get_children()[j]->get_type() == operation
 						&& i < j)
 					{
-						std::vector<QString> operands0;
-						Collecting_operands(*current_Node.children[i], operands0);
-						std::vector<QString> operands1;
-						Collecting_operands(*current_Node.children[j], operands1);
+						QString operand_value1 = "";
+						QString operand_value2 = "";
+						Search_for_first_operand(*current_Node.get_children()[i], &operand_value1);
+						Search_for_first_operand(*current_Node.get_children()[j], &operand_value2);
 
-						if (operands0[0] > operands1[0])
+						if (operand_value1 > operand_value2)
 						{
-							temp_Node = current_Node.children[i];
-							current_Node.children[i] = current_Node.children[j];
-							current_Node.children[j] = temp_Node;
+							temp_Node = current_Node.get_children()[i];
+							current_Node.change_child(current_Node.get_children()[j], i);
+							current_Node.change_child(temp_Node, j);
 						}
 					}
 
-					if (current_Node.children[i]->type == operation && current_Node.children[j]->type == operand
+					if (current_Node.get_children()[i]->get_type() == operation && current_Node.get_children()[j]->get_type() == operand
 						&& i < j)
 					{
-						std::vector<QString> operands0;
-						Collecting_operands(*current_Node.children[i], operands0);
-
-						if (operands0[0] > current_Node.children[j]->value)
+						QString operand_value = "";
+						Search_for_first_operand(*current_Node.get_children()[i], &operand_value);
+						if (operand_value > current_Node.get_children()[j]->get_value())
 						{
-							temp_Node = current_Node.children[i];
-							current_Node.children[i] = current_Node.children[j];
-							current_Node.children[j] = temp_Node;
+							temp_Node = current_Node.get_children()[i];
+							current_Node.change_child(current_Node.get_children()[j], i);
+							current_Node.change_child(temp_Node, j);
 						}
 					}
 
-					if (current_Node.children[i]->type == operand && current_Node.children[j]->type == operation
+					if (current_Node.get_children()[i]->get_type() == operand && current_Node.get_children()[j]->get_type() == operation
 						&& i < j)
 					{
-						std::vector<QString> operands1;
-						Collecting_operands(*current_Node.children[j], operands1);
-
-						if (current_Node.children[i]->value > operands1[0])
+						QString operand_value = "";
+						Search_for_first_operand(*current_Node.get_children()[j], &operand_value);
+						if (current_Node.get_children()[i]->get_value() > operand_value)
 						{
-							temp_Node = current_Node.children[i];
-							current_Node.children[i] = current_Node.children[j];
-							current_Node.children[j] = temp_Node;
+							temp_Node = current_Node.get_children()[i];
+							current_Node.change_child(current_Node.get_children()[j], i);
+							current_Node.change_child(temp_Node, j);
 						}
 					}
 				}
@@ -330,25 +355,20 @@ void Sorting_multiplication_and_sum_operands(Node& current_Node)
 	return;
 }
 
-void Collecting_operands(Node& current_Node, std::vector< QString>& all_operands)
+void Search_for_first_operand(Node& current_node, QString* operand_value)
 {
-	for (int i = 0; i < current_Node.children.size(); i++)
+	for (int i = 0; i < current_node.get_children().size(); i++)
 	{
-		if (current_Node.children[i]->type == operation)
+		if (current_node.get_children()[i]->get_type() == operation)
 		{
-			std::vector<QString> current_operands;
-			Collecting_operands(*current_Node.children[i], current_operands);
-			for (int j = 0; j < current_operands.size(); j++)
-			{
-				all_operands.push_back(current_operands[j]);
-			}
+			Search_for_first_operand(*current_node.get_children()[i], operand_value);
 		}
 		else
 		{
-			all_operands.push_back(current_Node.children[i]->value);
+			if (*operand_value == "")
+				*operand_value = current_node.get_children()[i]->get_value();
 		}
 	}
-
 	return;
 }
 
@@ -358,7 +378,7 @@ int Write_tree_to_file(char file_path[], Node& tree)
 	output_file.open(QIODevice::WriteOnly | QIODevice::Text);
 	QTextStream out(&output_file);
 
-	Write_nodes(out, *tree.children[0]);
+	Write_nodes(out, *tree.get_children()[0]);
 
 	output_file.close();
 	return 0;
@@ -366,29 +386,29 @@ int Write_tree_to_file(char file_path[], Node& tree)
 
 void Write_nodes(QTextStream& out, Node& current_Node)
 {
-	if (current_Node.type == operand)
+	if (current_Node.get_type() == operand)
 	{
-		out << "<operand>" << current_Node.value << "</operand>" << endl;
+		out << "<operand>" << current_Node.get_value() << "</operand>" << endl;
 		return;
 	}
 	else
 	{
-		if (current_Node.type == operation)
+		if (current_Node.get_type() == operation)
 		{
-			QString correct_value = current_Node.value;
-			if (current_Node.value == ">")
+			QString correct_value = current_Node.get_value();
+			if (current_Node.get_value() == ">")
 				correct_value = "&gt;";
 			else
 			{
-				if (current_Node.value == "<")
+				if (current_Node.get_value() == "<")
 					correct_value = "&lt;";
 				else
 				{
-					if (current_Node.value == "<=")
+					if (current_Node.get_value() == "<=")
 						correct_value = "&lt;=";
 					else
 					{
-						if (current_Node.value == ">=")
+						if (current_Node.get_value() == ">=")
 							correct_value = "&gt;=";
 					}
 				}
@@ -396,9 +416,9 @@ void Write_nodes(QTextStream& out, Node& current_Node)
 
 			out << "<operation symbol=\"" << correct_value << "\">" << endl;
 
-			for (int i = 0; i < current_Node.children.size(); i++)
+			for (int i = 0; i < current_Node.get_children().size(); i++)
 			{
-				Write_nodes(out, *current_Node.children[i]);
+				Write_nodes(out, *current_Node.get_children()[i]);
 			}
 			out << "</operation>" << endl;
 		}

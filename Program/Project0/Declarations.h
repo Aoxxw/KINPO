@@ -13,11 +13,69 @@ enum Node_type { operation, operand };
 class Node {
 
 public:
+	void set_type(Node_type type)
+	{
+		this->type = type;
+	}
+
+	void set_value(QString value)
+	{
+		this->value = value;
+	}
+
+	void set_children(std::vector<Node*> children)
+	{
+		this->children = children;
+	}
+void add_child(Node* child)
+	{
+		this->children.push_back(child);
+	}
+
+	void change_child(Node* child, int i)
+	{
+		this->children[i] = child;
+	}
+
+	void insert_children(int position, std::vector<Node*> children_to_insert)
+	{
+		auto iter = this->children.cbegin();
+		this->children.insert(iter + position, children_to_insert.begin(), children_to_insert.begin()+ children_to_insert.size());
+		iter = this->children.cbegin();
+	}
+
+	void insert_children(int position, Node& child_to_insert)
+	{
+		auto iter = this->children.cbegin();
+		this->children.insert(iter + position, &child_to_insert);
+		iter = this->children.cbegin();
+	}
+
+	void erase_child(int position)
+	{
+		auto iter = this->children.cbegin();
+		this->children.erase(iter + position);
+	}
+
+	Node_type get_type()
+	{
+		return this->type;
+	}
+
+	QString get_value()
+	{
+		return this->value;
+	}
+
+	std::vector<Node*> get_children()
+	{
+		return this->children;
+	}
+
+private:
 	Node_type type;
 	QString value;
 	std::vector<Node*> children;
-private:
-	
 };
 
 /*! —читывает дерево из файла и возвращает соответствующую ошибку, если она найдена
@@ -61,11 +119,11 @@ void Sorting_in_alphabet_order(Node& current_node);
 */
 void Sorting_multiplication_and_sum_operands(Node& current_node);
 
-/*! ѕолучает значени€ всех операндов в ветви ниже данного узла
+/*! ѕолучает значение первого(самого левого) встреченного операнда в ветви ниже данного узла
 \param[in] current_node - текущий узел
-\param[in,out] all_operands - вектор найденных значений операнда
+\param[in,out] operand_value - найденное значение операнда
 */
-void Collecting_operands(Node& current_Node, std::vector< QString>& all_operands);
+void Search_for_first_operand(Node& current_node, QString* operand_value);
 
 /*! ќбеспечивает запись дерева в файл
 \param[in] file_path[] - путь к файлу
