@@ -27,7 +27,7 @@ public:
 	{
 		this->children = children;
 	}
-void add_child(Node* child)
+	void add_child(Node* child)
 	{
 		this->children.push_back(child);
 	}
@@ -40,7 +40,7 @@ void add_child(Node* child)
 	void insert_children(int position, std::vector<Node*> children_to_insert)
 	{
 		auto iter = this->children.cbegin();
-		this->children.insert(iter + position, children_to_insert.begin(), children_to_insert.begin()+ children_to_insert.size());
+		this->children.insert(iter + position, children_to_insert.begin(), children_to_insert.begin() + children_to_insert.size());
 		iter = this->children.cbegin();
 	}
 
@@ -85,7 +85,7 @@ private:
 int Read_tree_from_file(char file_path[], Node& tree);
 
 /*! Обеспечивает рекурсивное считывание каждого из узлов дерева
-\param[in] reader - средство считывания из xml-файла 
+\param[in] reader - средство считывания из xml-файла
 \param[in,out] parent_node - узел, в который записываются узлы-потомки
 \return - номер ошибки, если она есть, или 0 при успешном завершении
 */
@@ -101,13 +101,13 @@ void Transfering_to_left_side(Node& tree);
 \param[in, out] parent_node - родительский узел текущего узла
 \param[in] position - позиция текущего узла среди узлов-потомков родительского узла
 */
-void Change_sign(Node& current_node, Node& parent_node, int child_pos);
+void Change_sign(Node& current_node, Node& parent_node, int position);
 
 /* Объединяет серии узлов операций суммирования, отрицания или умножения
 \param[in, out] current_node - текущий узел
 \param[in,out] patent_nade - родительский узел
 */
-void Uniting_pluses_minuses_multiplications(Node& current_node);
+void Uniting_pluses_minuses_multiplications(Node& current_node, Node& parent_node);
 
 /* Рекурсивно сортирует в алфавитном порядке узлы-потомки текущего узла с использованием соответствующей функции
 \param[in,out] current_node - текущий узел
@@ -124,12 +124,6 @@ void Sorting_multiplication_and_sum_operands(Node& current_node);
 \param[in,out] operand_value - найденное значение операнда
 */
 void Search_for_first_operand(Node& current_node, QString* operand_value);
-
-/*! Обеспечивает запись дерева в файл
-\param[in] file_path[] - путь к файлу
-\param[in] tree - записываемое дерево
-*/
-int Write_tree_to_file(char file_path[], Node& tree);
 
 /*! Обеспечивает рекурсивную запись каждого из узлов дерева
 \param[in] out - поток для записи
