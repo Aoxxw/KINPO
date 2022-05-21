@@ -214,12 +214,14 @@ void Uniting_pluses_minuses_multiplications(Node& current_node, Node& parent_nod
 
 				current_node.insert_children(i, *minus_node);
 				current_node.erase_child(i + 1);
+
+				Uniting_pluses_minuses_multiplications(*current_node.get_children()[i], current_node);
 			}
 		}
 
-		if (current_node.get_children()[i]->get_value() == "-" && current_node.get_children()[i]->get_children()[0]->get_value() == "-")
+		if (current_node.get_value() == "-" && current_node.get_children()[0]->get_value() == "-")
 		{
-			parent_node.insert_children(i, current_node.get_children()[i]->get_children()[0]->get_children());
+			parent_node.insert_children(i, current_node.get_children()[0]->get_children());
 			parent_node.erase_child(i + 1);
 		}
 
