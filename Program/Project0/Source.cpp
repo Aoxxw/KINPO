@@ -41,15 +41,12 @@ int main(int argc, char* argv[])
 
 	Transfering_to_left_side(*tree);
 
-
 	Node* ghost_parent = new Node;
 	ghost_parent->set_type(operation);
 	ghost_parent->set_value("");
 	std::vector<Node*> ghost_parent_child = { tree };
 	ghost_parent->set_children(ghost_parent_child);
-
 	Uniting_pluses_minuses_multiplications(*tree, *ghost_parent);
-
 
 	Sorting_in_alphabet_order(*tree->get_children()[0]);
 
@@ -86,8 +83,8 @@ int Read_tree_from_file(char file_path[], Node& tree)
 	QXmlStreamReader reader(input_file);
 
 	reader.readNextStartElement();
-
 	Read_nodes(reader, tree);
+
 	tree = *tree.get_children()[0];
 
 	input_file->close();
@@ -160,23 +157,20 @@ void Transfering_to_left_side(Node& main_node)
 
 void Change_sign(Node& current_node, Node& parent_node, int position)
 {
-	if (parent_node.get_value() == "+")
+	if (current_node.get_value() == "-")
 	{
-		if (current_node.get_value() == "-")
-		{
-			parent_node.insert_children(position, current_node.get_children());
-			parent_node.erase_child(position + 1);
-		}
-		else
-		{
-			Node* minus_node = new Node;
-			minus_node->set_value("-");
-			minus_node->set_type(operation);
-			minus_node->add_child(&current_node);
+		parent_node.insert_children(position, current_node.get_children());
+		parent_node.erase_child(position + 1);
+	}
+	else
+	{
+		Node* minus_node = new Node;
+		minus_node->set_value("-");
+		minus_node->set_type(operation);
+		minus_node->add_child(&current_node);
 
-			parent_node.insert_children(position, *minus_node);
-			parent_node.erase_child(position + 1);
-		}
+		parent_node.insert_children(position, *minus_node);
+		parent_node.erase_child(position + 1);
 	}
 	return;
 }
@@ -221,7 +215,7 @@ void Uniting_pluses_minuses_multiplications(Node& current_node, Node& parent_nod
 
 		if (current_node.get_value() == "-" && current_node.get_children()[0]->get_value() == "-")
 		{
-			parent_node.insert_children(i, current_node.get_children()[0]->get_children());
+            parent_node.insert_children(i, current_node.get_children()[0]->get_children());
 			parent_node.erase_child(i + 1);
 		}
 

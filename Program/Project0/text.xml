@@ -1,7 +1,17 @@
 <operation symbol="&gt;">
-    <operation symbol="+">
-        <operand>b</operand>
-        <operand>a</operand>
-    </operation>
-  <operand>8</operand>
+	<operand>5</operand>
+	<operation symbol="*">
+		<operand>7</operand>
+		<operation symbol="+">
+			<operand>b</operand>
+			<operation symbol="-">
+				<operation symbol="+">
+					<operation symbol="-">
+						<operand>a</operand>
+					</operation>
+					<operand>g</operand>
+				</operation>
+			</operation>
+		</operation>
+	</operation>
 </operation>
