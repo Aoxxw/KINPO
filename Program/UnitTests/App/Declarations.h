@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <QRegularExpression>
+#include <QDebug>
+#include <QFileInfo>
 
 
 enum Node_type { operation, operand };
@@ -77,11 +79,14 @@ public:
 		return this->children;
 	}
 
+
 private:
 	Node_type type;
 	QString value;
 	std::vector<Node*> children;
 };
+
+void Comparing(Node& node1, Node& node2, bool* are_equal);
 
 /*! Считывает дерево из файла и возвращает соответствующую ошибку, если она найдена
 \param[in] file_path[] путь ко входному файлу
@@ -113,7 +118,7 @@ void Change_sign(Node& current_node, Node& parent_node, int position);
 */
 void Uniting_pluses_minuses_multiplications(Node& current_node, Node& parent_node);
 
-/* Рекурсивно сортирует в алфавитном порядке узлы-потомки текущего узла с использованием соответствующей функции
+/* � екурсивно сортирует в алфавитном порядке узлы-потомки текущего узла с использованием соответствующей функции
 \param[in,out] current_node - текущий узел
 */
 void Sorting_in_alphabet_order(Node& current_node);
@@ -134,6 +139,5 @@ void Search_for_first_operand(Node& current_node, QString* operand_value);
 \param[in] current_node - записываемый узел
 */
 void Write_nodes(QTextStream& out, Node& current_node);
-
 
 #endif // DECLARATIONS_H

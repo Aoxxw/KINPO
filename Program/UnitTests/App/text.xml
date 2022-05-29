@@ -1,0 +1,8 @@
+<operation symbol="&gt;">
+    <operation symbol="^">
+        <operand>b</operand>
+        <operand>a</operand>
+	<operand>c</operand>
+    </operation>
+  <operand>8</operand>
+</operation>

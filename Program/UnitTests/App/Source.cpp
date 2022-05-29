@@ -1,89 +1,36 @@
 #include <iostream>
-#include "../Project0/Declarations.h"
-
-int main(int argc, char* argv[])
-{
-	QFile output_file(argv[3]);
-	output_file.open(QIODevice::WriteOnly | QIODevice::Text);
-	QTextStream out(&output_file);
-
-	if (argc != 4) {
-		out << "Too many arguments." << endl;
-		return -1;
-	}
-
-	Node* tree = new Node;
-	tree->set_type(operation);
-
-	QString error_text = "";
-	switch (Read_tree_from_file(argv[2], *tree))
-	{
-	case -1:
-		error_text = "Invalid input file specified. The file may not exist.";
-	case -2:
-		error_text = "The file extension is incorrect. The file must have the extension .xml";
-	case -3:
-		error_text = "The file can not be read. The input file may not have the correct syntax.";
-	case -4:
-		error_text = "The source tree contains unsupported operations.";
-	case -5:
-		error_text = "The length of one or more operands exceeds the maximum length (100 characters).";
-	case -6:
-		error_text = "No comparison signs were encountered in the input file.";
-	case -7:
-		error_text = "Incorrect location of the comparison operation in the input tree.";
-	case -8:
-		error_text = "One or more operations correspond to an incorrect number of operands.";
-	default:
-		out << error_text;
-		break;
-	}
-
-	Transfering_to_left_side(*tree);
-
-	Node* ghost_parent = new Node;
-	ghost_parent->set_type(operation);
-	ghost_parent->set_value("");
-	std::vector<Node*> ghost_parent_child = { tree };
-	ghost_parent->set_children(ghost_parent_child);
-	Uniting_pluses_minuses_multiplications(*tree, *ghost_parent);
-
-	Sorting_in_alphabet_order(*tree->get_children()[0]);
-
-	Write_nodes(out, *tree);
-
-	output_file.close();
-	return 0;
-
-	/*	int count = 0;
-		while (!reader.atEnd())
-		{
-			reader.readNext();
-			if (reader.hasError())
-			{
-				out << "Errors in xml." << endl;
-				return -2;
-			}
-			if (reader.isStartElement())
-			{
-				count++;
-			}
-		}*/
-}
+#include "Declarations.h"
 
 int Read_tree_from_file(char file_path[], Node& tree)
 {
 	QFile* input_file = new QFile(file_path);
+    QFileInfo file_info(file_path);
 
 	if (!input_file->open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 		return -1;
 	}
 
+    if(file_info.suffix()!="xml")
+    {
+        return -2;
+    }
+
 	QXmlStreamReader reader(input_file);
 
 	reader.readNextStartElement();
-	Read_nodes(reader, tree);
+
+    int read_error = 0;
+    read_error = Read_nodes(reader, tree);
+    if(read_error<0)
+    {
+        switch (read_error)
+        {
+        case -5: // некорректное количество операндов
+           return -8;
+            break;
+        }
+    }
 
 	tree = *tree.get_children()[0];
 
@@ -107,17 +54,31 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
 			while (!reader.isStartElement() && !reader.atEnd())
 			{
 				reader.readNext();
+
 				if (reader.isEndElement() && reader.name() == "operation")
-				{
-					return 0;
+                {
+                    /*if (((current_node->get_value()=="-" || current_node->get_value()=="sqrt") && current_node->get_children().size()!=1) ||
+                          ((current_node->get_value()=="+" || current_node->get_value()=="*") && current_node->get_children().size()<2)) {}
+*/ //(current_node->get_value()=="^" || current_node->get_value()=="//") &&
+
+                    if (current_node->get_children().size() !=2)
+                    {
+                        return -5;
+                    }
+                    else
+                    {
+                      return 0;
+                    }
 				}
 			}
 			if (reader.atEnd())
 			{
 				return -1;
 			}
-			Read_nodes(reader, *current_node);
+            Read_nodes(reader, *current_node);
 		}
+
+
 	}
 	else
 	{
@@ -374,4 +335,21 @@ void Write_nodes(QTextStream& out, Node& current_node)
 		}
 		return;
 	}
+}
+
+
+void Comparing(Node& node1, Node& node2, bool* are_equal)
+{
+    if(node1.get_children().size()==node2.get_children().size())
+    {
+        for(int i=0;i<node1.get_children().size();i++)
+        {
+            Comparing(*node1.get_children()[i], *node2.get_children()[i], are_equal);
+        }
+    }
+    else
+        *are_equal=false;
+
+    if (node1.get_type()!=node2.get_type() || node1.get_value()!=node2.get_value())
+        *are_equal=false;
 }
