@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.1, 2022-05-29T19:10:02. -->
+<!-- Written by QtCreator 4.11.1, 2022-06-03T00:28:21. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -288,8 +288,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">App2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/App/App.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/App/App.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/App/App.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/App/App.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -363,8 +363,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_ChangeSign2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -438,8 +438,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_ReadNodes2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -513,8 +513,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_SearchForFirstoperand2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -588,8 +588,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_SortingInAlphabetOrder2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -663,8 +663,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_SortingMultiplicationAndSumOperands2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -738,8 +738,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_TransferingToLeftSide2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -813,8 +813,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_UnitingPlusesMinusesMultiplications2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -888,8 +888,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_WriteNodes2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/toGit_all/Program6/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>

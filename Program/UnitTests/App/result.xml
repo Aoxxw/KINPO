@@ -1,13 +1,1 @@
-<operation symbol="&gt;">
-<operation symbol="+">
-<operation symbol="-">
-<operand>8</operand>
-</operation>
-<operation symbol="^">
-<operand>b</operand>
-<operand>a</operand>
-<operand>c</operand>
-</operation>
-</operation>
-<operand>0</operand>
-</operation>
+One or more operations correspond to an incorrect number of operands.

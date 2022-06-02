@@ -26,9 +26,19 @@ int Read_tree_from_file(char file_path[], Node& tree)
     {
         switch (read_error)
         {
+        case -2: // неизвестная операция
+            return -4;
+            break;
+        case -3:// длина операнда более 100
+            return -5;
+            break;
+        case -4: // операция сравнения не на месте
+            return -7;
+            break;
         case -5: // некорректное количество операндов
            return -8;
             break;
+
         }
     }
 
@@ -41,6 +51,8 @@ int Read_tree_from_file(char file_path[], Node& tree)
 int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
 {
 	Node* current_node = new Node;
+    int error=0;
+    bool is_comparison_sign_first=1;
 
 	if (reader.name() == "operation")
 	{
@@ -57,17 +69,33 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
 
 				if (reader.isEndElement() && reader.name() == "operation")
                 {
-                    /*if (((current_node->get_value()=="-" || current_node->get_value()=="sqrt") && current_node->get_children().size()!=1) ||
-                          ((current_node->get_value()=="+" || current_node->get_value()=="*") && current_node->get_children().size()<2)) {}
-*/ //(current_node->get_value()=="^" || current_node->get_value()=="//") &&
-
-                    if (current_node->get_children().size() !=2)
+                    if (    ((current_node->get_value()=="^" || current_node->get_value()=="/") && current_node->get_children().size() !=2) ||
+                            ((current_node->get_value()=="+" || current_node->get_value()=="*") && current_node->get_children().size()<2) ||
+                            ((current_node->get_value()=="-" || current_node->get_value()=="sqrt") && current_node->get_children().size()!=1) ||
+                            ((current_node->get_value()=="=" || current_node->get_value()==">" || current_node->get_value()=="<" || current_node->get_value()==">=" || current_node->get_value()=="<=" ) && current_node->get_children().size()!=2) )
                     {
                         return -5;
                     }
                     else
                     {
-                      return 0;
+                        if((current_node->get_value()=="=" || current_node->get_value()==">" || current_node->get_value()=="<" || current_node->get_value()==">=" || current_node->get_value()=="<=" ))
+                        {
+                            return -4;
+                        }
+                        else
+                        {
+                            if(current_node->get_value()!="^" && current_node->get_value()!="/" && current_node->get_value()!="+" &&
+                               current_node->get_value()!="*" && current_node->get_value()!="-" && current_node->get_value()!="sqrt" &&
+                               current_node->get_value()!="=" && current_node->get_value()!=">" && current_node->get_value()!="<" &&
+                               current_node->get_value()!=">=" && current_node->get_value()!="<=" )
+                            {
+                               return -2;
+                            }
+                            else
+                            {
+                                return 0;
+                            }
+                        }
                     }
 				}
 			}
@@ -75,7 +103,16 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
 			{
 				return -1;
 			}
-            Read_nodes(reader, *current_node);
+
+            if(error==0)
+            {
+               error=Read_nodes(reader, *current_node);
+            }
+            else
+            {
+                return error;
+            }
+
 		}
 
 
@@ -85,11 +122,18 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
 		if (reader.name() == "operand")
 		{
 			current_node->set_type(operand);
-			current_node->set_value(reader.readElementText());
+            if(reader.readElementText().length()>100)
+            {
+                return -3;
+            }
+            else
+            {
+                current_node->set_value(reader.readElementText());
+            }
 
 			parent_node.add_child(current_node);
 
-			return 0;
+            return 0;
 		}
 	}
 }

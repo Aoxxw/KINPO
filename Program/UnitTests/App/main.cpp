@@ -22,19 +22,19 @@ int main(int argc, char* argv[])
         {
             switch (Error_number)
             {
-            case -1:
+            case -1://есть
                 error_text = "Invalid input file specified. The file may not exist.";
                 break;
-            case -2:
+            case -2://есть
                 error_text = "The file extension is incorrect. The file must have the extension .xml";
                 break;
             case -3:
                 error_text = "The file can not be read. The input file may not have the correct syntax.";
                 break;
-            case -4:
+            case -4://есть
                 error_text = "The source tree contains unsupported operations.";
                 break;
-            case -5:
+            case -5://есть
                 error_text = "The length of one or more operands exceeds the maximum length (100 characters).";
                 break;
             case -6:
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
             case -7:
                 error_text = "Incorrect location of the comparison operation in the input tree.";
                 break;
-            case -8:
+            case -8://есть
                 error_text = "One or more operations correspond to an incorrect number of operands.";
                 break;
             default:
