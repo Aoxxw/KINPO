@@ -21,24 +21,28 @@ int Read_tree_from_file(char file_path[], Node& tree)
 	reader.readNextStartElement();
 
     int read_error = 0;
-    read_error = Read_nodes(reader, tree);
+    int number_of_iteration=-1;
+
+    read_error = Read_nodes(reader, tree, number_of_iteration);
     if(read_error<0)
     {
         switch (read_error)
         {
+        case -1://ошибки синтаксиса
+            return -3;
+            break;
         case -2: // неизвестная операция
             return -4;
             break;
         case -3:// длина операнда более 100
             return -5;
             break;
-        case -4: // операция сравнения не на месте
-            return -7;
+        case -4: // операция сравнения некорректна
+            return -6;
             break;
         case -5: // некорректное количество операндов
-           return -8;
+           return -7;
             break;
-
         }
     }
 
@@ -48,11 +52,11 @@ int Read_tree_from_file(char file_path[], Node& tree)
 	return 0;
 }
 
-int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
+int Read_nodes(QXmlStreamReader& reader, Node& parent_node, int& number_of_iteration)
 {
 	Node* current_node = new Node;
     int error=0;
-    bool is_comparison_sign_first=1;
+    number_of_iteration++;
 
 	if (reader.name() == "operation")
 	{
@@ -60,12 +64,43 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
 		current_node->set_value(reader.attributes().value("symbol").toString());
 		parent_node.add_child(current_node);
 
+        if(reader.hasError())
+        {
+            return -1;
+        }
+
+        //проверка значения текущей операции
+        if(current_node->get_value()!="^" && current_node->get_value()!="/" && current_node->get_value()!="+" &&
+           current_node->get_value()!="*" && current_node->get_value()!="-" && current_node->get_value()!="sqrt" &&
+           current_node->get_value()!="=" && current_node->get_value()!=">" && current_node->get_value()!="<" &&
+           current_node->get_value()!=">=" && current_node->get_value()!="<=" )
+        {
+           return -2;
+        }
+
+        //местоположение операции
+        if((current_node->get_value()=="=" || current_node->get_value()==">" || current_node->get_value()=="<" || current_node->get_value()==">=" || current_node->get_value()=="<=" ) && number_of_iteration!=0)
+        {
+          return -4;
+        }
+
+
 		while (true)
 		{
 			reader.readNext();
 			while (!reader.isStartElement() && !reader.atEnd())
 			{
 				reader.readNext();
+
+                if (reader.atEnd())
+                {
+                    return -1;
+                }
+
+                if(reader.hasError())
+                {
+                    return -1;
+                }
 
 				if (reader.isEndElement() && reader.name() == "operation")
                 {
@@ -76,66 +111,45 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node)
                     {
                         return -5;
                     }
-                    else
-                    {
-                        if((current_node->get_value()=="=" || current_node->get_value()==">" || current_node->get_value()=="<" || current_node->get_value()==">=" || current_node->get_value()=="<=" ))
-                        {
-                            return -4;
-                        }
-                        else
-                        {
-                            if(current_node->get_value()!="^" && current_node->get_value()!="/" && current_node->get_value()!="+" &&
-                               current_node->get_value()!="*" && current_node->get_value()!="-" && current_node->get_value()!="sqrt" &&
-                               current_node->get_value()!="=" && current_node->get_value()!=">" && current_node->get_value()!="<" &&
-                               current_node->get_value()!=">=" && current_node->get_value()!="<=" )
-                            {
-                               return -2;
-                            }
-                            else
-                            {
-                                return 0;
-                            }
-                        }
-                    }
+                   return error;
 				}
-			}
-			if (reader.atEnd())
-			{
-				return -1;
 			}
 
             if(error==0)
             {
-               error=Read_nodes(reader, *current_node);
+               error=Read_nodes(reader, *current_node, number_of_iteration);
             }
             else
             {
                 return error;
             }
+        }
 
-		}
-
+        //число потомков операции
 
 	}
 	else
 	{
 		if (reader.name() == "operand")
-		{
-			current_node->set_type(operand);
-            if(reader.readElementText().length()>100)
+        {
+            current_node->set_value(reader.readElementText());
+            current_node->set_type(operand);
+            parent_node.add_child(current_node);
+
+            if(current_node->get_value().length()>100)
             {
                 return -3;
             }
-            else
-            {
-                current_node->set_value(reader.readElementText());
-            }
 
-			parent_node.add_child(current_node);
+            if(reader.hasError())
+            {
+                return -1;
+            }
 
             return 0;
 		}
 	}
+    //return error;
 }
 
 void Transfering_to_left_side(Node& main_node)

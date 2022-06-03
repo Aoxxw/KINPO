@@ -1,1 +1,11 @@
-One or more operations correspond to an incorrect number of operands.
+<operation symbol="=">
+<operation symbol="+">
+<operation symbol="-">
+<operand>8</operand>
+</operation>
+<operation symbol="-">
+<operand>b</operand>
+</operation>
+</operation>
+<operand>0</operand>
+</operation>

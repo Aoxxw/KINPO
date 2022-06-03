@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.1, 2022-06-03T00:28:21. -->
+<!-- Written by QtCreator 4.11.1, 2022-06-03T20:35:00. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -287,10 +287,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">App2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/App/App.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/App/App.pro</value>
-    <value type="QString" key="RunConfiguration.Arguments"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/App/App.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/App/App.pro</value>
+    <value type="QString" key="RunConfiguration.Arguments">2 QCoreApplication::applicationDirPath\..\..\..\UnitTests\App\text.xml QCoreApplication::applicationDirPath\..\..\..\UnitTests\App\result.xml</value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -300,7 +299,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/App</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -362,9 +361,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_ChangeSign2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_ChangeSign/Test_ChangeSign.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -375,7 +373,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_ChangeSign</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.2">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -437,9 +435,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_ReadNodes2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_ReadNodes/Test_ReadNodes.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -450,7 +447,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_ReadNodes</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.3">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -512,9 +509,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_SearchForFirstoperand2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_SearchForFirstoperand/Test_SearchForFirstoperand.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -525,7 +521,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_SearchForFirstoperand</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.4">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -587,9 +583,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_SortingInAlphabetOrder2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_SortingInAlphabetOrder/Test_SortingInAlphabetOrder.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -600,7 +595,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_SortingInAlphabetOrder</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.5">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -662,9 +657,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_SortingMultiplicationAndSumOperands2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_SortingMultiplicationAndSumOperands/Test_SortingMultiplicationAndSumOperands.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -675,7 +669,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_SortingMultiplicationAndSumOperands</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.6">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -737,9 +731,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_TransferingToLeftSide2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_TransferingToLeftSide/Test_TransferingToLeftSide.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -750,7 +743,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_TransferingToLeftSide</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.7">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -812,9 +805,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_UnitingPlusesMinusesMultiplications2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_UnitingPlusesMinusesMultiplications/Test_UnitingPlusesMinusesMultiplications.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -825,7 +817,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_UnitingPlusesMinusesMultiplications</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.8">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -887,9 +879,8 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Test_WriteNodes2</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Latest_git/Program/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/Univer/SecondSem/KiNPO/Project/UnitTests/Test_WriteNodes/Test_WriteNodes.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
@@ -900,7 +891,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/Univer/SecondSem/KiNPO/Project/build-UnitTests-Desktop_Qt_5_14_2_MinGW_32_bit-Debug/Test_WriteNodes</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">9</value>
   </valuemap>

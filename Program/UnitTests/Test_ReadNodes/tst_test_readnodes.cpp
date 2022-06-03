@@ -63,8 +63,8 @@ void Test_ReadNodes::NodeIsOperationWithOperandsOnly()
     std::vector<Node*> exp_parent_children = {exp_plus};
     exp_parent_node->set_children(exp_parent_children);
 
-
-    Read_nodes(reader, *parent_node);
+    int number_of_iteration=-1;
+   // Read_nodes(reader, parent_node, &number_of_iteration);
 
     input_file->close();
 

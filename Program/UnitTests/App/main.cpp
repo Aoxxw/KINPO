@@ -22,31 +22,26 @@ int main(int argc, char* argv[])
         {
             switch (Error_number)
             {
-            case -1://есть
+            case -1:
                 error_text = "Invalid input file specified. The file may not exist.";
                 break;
-            case -2://есть
+            case -2:
                 error_text = "The file extension is incorrect. The file must have the extension .xml";
                 break;
             case -3:
                 error_text = "The file can not be read. The input file may not have the correct syntax.";
                 break;
-            case -4://есть
+            case -4:
                 error_text = "The source tree contains unsupported operations.";
                 break;
-            case -5://есть
+            case -5:
                 error_text = "The length of one or more operands exceeds the maximum length (100 characters).";
                 break;
             case -6:
-                error_text = "No comparison signs were encountered in the input file.";
+                error_text = "Incorrect location or amount of the comparison operations in the input tree.";
                 break;
             case -7:
-                error_text = "Incorrect location of the comparison operation in the input tree.";
-                break;
-            case -8://есть
                 error_text = "One or more operations correspond to an incorrect number of operands.";
-                break;
-            default:
                 break;
             }
             out << error_text;
@@ -68,21 +63,6 @@ int main(int argc, char* argv[])
         Write_nodes(out, *tree);
 
         output_file.close();
-
-        /*	int count = 0;
-            while (!reader.atEnd())
-            {
-                reader.readNext();
-                if (reader.hasError())
-                {
-                    out << "Errors in xml." << endl;
-                    return -2;
-                }
-                if (reader.isStartElement())
-                {
-                    count++;
-                }
-            }*/
     }
     else
     {

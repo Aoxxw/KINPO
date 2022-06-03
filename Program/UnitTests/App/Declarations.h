@@ -97,9 +97,10 @@ int Read_tree_from_file(char file_path[], Node& tree);
 /*! Обеспечивает рекурсивное считывание каждого из узлов дерева
 \param[in] reader - средство считывания из xml-файла 
 \param[in,out] parent_node - узел, в который записываются узлы-потомки
+\
 \return - номер ошибки, если она есть, или 0 при успешном завершении
 */
-int Read_nodes(QXmlStreamReader& reader, Node& parent_node);
+int Read_nodes(QXmlStreamReader& reader, Node& parent_node, int& number_of_iteration);
 
 /*! Переносит правую часть (не)равенства в левую с использованием функции смены знаков
 \param[in,out] tree - обрабатываемое дерево (не)равенства
