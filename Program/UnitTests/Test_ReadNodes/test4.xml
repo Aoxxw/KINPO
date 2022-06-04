@@ -1,0 +1,9 @@
+<operation symbol="+">
+	<operation symbol="*">
+		<operand>a</operand>
+		<operand>b</operand>
+	</operation>
+	<operation symbol="sqrt">
+		<operand>4</operand>
+	</operation>
+</operation>

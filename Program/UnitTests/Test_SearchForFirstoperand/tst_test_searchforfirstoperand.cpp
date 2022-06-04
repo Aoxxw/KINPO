@@ -10,7 +10,7 @@ public:
 private slots:
     void NodeIsOperand();
     void NodeIsOperationWithOneChild();
-    void NodeIsOperationWithSeveralChild();
+    void NodeIsOperationWithSeveralChildren();
     void SeveralLevelsOfNodes();
     void SeveralOperationsAfterNode();
 };
@@ -44,7 +44,7 @@ void Test_SearchForFirstoperand::NodeIsOperationWithOneChild()
     QVERIFY(operand_value == "a");
 }
 
-void Test_SearchForFirstoperand::NodeIsOperationWithSeveralChild()
+void Test_SearchForFirstoperand::NodeIsOperationWithSeveralChildren()
 {
     Node* a=new Node;
     a->set_value("a");

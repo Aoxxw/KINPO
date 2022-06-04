@@ -1,4 +1,4 @@
-<operation symbol="+">
+<operation symbol="&lt;=">
 <operand>a</operand>
 <operand>b</operand>
 </operation>

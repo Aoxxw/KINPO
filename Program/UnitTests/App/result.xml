@@ -1,10 +1,16 @@
-<operation symbol="=">
+<operation symbol="&gt;">
+<operation symbol="+">
+<operand>5</operand>
+<operation symbol="-">
+<operation symbol="*">
+<operand>7</operand>
 <operation symbol="+">
 <operation symbol="-">
-<operand>8</operand>
+<operand>a</operand>
 </operation>
-<operation symbol="-">
 <operand>b</operand>
+</operation>
+</operation>
 </operation>
 </operation>
 <operand>0</operand>
