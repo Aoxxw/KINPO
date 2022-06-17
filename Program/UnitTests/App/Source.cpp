@@ -61,6 +61,8 @@ int Read_tree_from_file(char file_path[], Node& tree)
 int Read_nodes(QXmlStreamReader& reader, Node& parent_node, int& number_of_iteration)
 {
 	Node* current_node = new Node;
+
+    //Задать, что ошибка отсуствует
     int error=0;
 
     //Увеличить число вызовов данной функции
@@ -169,10 +171,10 @@ int Read_nodes(QXmlStreamReader& reader, Node& parent_node, int& number_of_itera
         //Если имя текущего xml-элемента – "operand"
 		if (reader.name() == "operand")
         {
-            //Присвоить значению текущего узла значение, записанное в текущем xml-элементе
-            current_node->set_value(reader.readElementText());
             //Присвоить типу текущего узла значение "операнд"
             current_node->set_type(operand);
+            //Присвоить значению текущего узла значение, записанное в текущем xml-элементе
+            current_node->set_value(reader.readElementText());
             //Добавить текущий узел в массив узлов-потомков у текущего родительского узла
             parent_node.add_child(current_node);
 
@@ -306,7 +308,7 @@ void Uniting_pluses_minuses_multiplications(Node& current_node, Node& parent_nod
             //Вставить в массив узлов-потомков родительского узла узел-потомок текущего узла-потомка
             parent_node.insert_children(i, current_node.get_children()[0]->get_children());
             //Удалить из массива узлов-потомков родительского узла текущий узел
-            parent_node.erase_child(i + 2);
+            parent_node.erase_child(i + 1);
 		}
 
         //Если значение текущего узла  - "*" и значение узла-потомка – "*"

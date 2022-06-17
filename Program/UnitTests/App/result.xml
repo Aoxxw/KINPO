@@ -1,17 +1,1 @@
-<operation symbol="&gt;">
-<operation symbol="+">
-<operand>5</operand>
-<operation symbol="-">
-<operation symbol="*">
-<operand>7</operand>
-<operation symbol="+">
-<operation symbol="-">
-<operand>a</operand>
-</operation>
-<operand>b</operand>
-</operation>
-</operation>
-</operation>
-</operation>
-<operand>0</operand>
-</operation>
+Invalid input file specified. The file may not exist.

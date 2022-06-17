@@ -8,8 +8,9 @@ int main(int argc, char* argv[])
         qDebug() << "Incorrect amount of arguments." << endl;
     }
 
-    //Если удалось открыть выходной файл
     QFile output_file(argv[3]);
+
+    //Если удалось открыть выходной файл
     if (output_file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         QTextStream out(&output_file);
@@ -17,7 +18,7 @@ int main(int argc, char* argv[])
         Node* tree = new Node;
         tree->set_type(operation);
 
-        //Считать дерево
+        //Считать дерево из файла
         int Error_number = 0;
         Error_number = Read_tree_from_file(argv[2], *tree);
 

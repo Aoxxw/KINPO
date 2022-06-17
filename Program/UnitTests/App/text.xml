@@ -2,7 +2,7 @@
 <operand>5</operand>
 <operation symbol="*">
 <operand>7</operand>
-<operation symbol="+">
+<operation ="+">
 <operand>b</operand>
 <operation symbol="-">
 <operand>a</operand>
